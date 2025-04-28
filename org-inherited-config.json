@@ -4,31 +4,31 @@
     "enabledManagers": ["dockerfile", "npm","pip_requirements","gomod","cargo"],
     "packageRules": [
       {
-        "description": "Group all Go module updates together",
+        "description": ["Group all Go module updates together"],
         "matchManagers": ["gomod"],
         "groupName": "Go Dependencies",
         "groupSlug": "go-deps"
       },
       {
-        "description": "Group all Docker image updates together",
+        "description": ["Group all Docker image updates together"],
         "matchManagers": ["dockerfile"],
         "groupName": "Docker Images",
         "groupSlug": "docker-deps"
       },
       {
-        "description": "Group all Python module updates together",
+        "description": ["Group all Python module updates together"],
         "matchManagers": ["pip_requirements"],
         "groupName": "Python Dependencies",
         "groupSlug": "python-deps"
       },
       {
-        "description": "Group all Rust module updates together",
+        "description": ["Group all Rust module updates together"],
         "matchManagers": ["cargo"],
         "groupName": "Rust Dependencies",
         "groupSlug": "rust-deps"
       },
       {
-        "description": "Group all NPM module updates together",
+        "description": ["Group all NPM module updates together"],
         "matchManagers": ["npm"],
         "groupName": "NPM Dependencies",
         "groupSlug": "npm-deps"
