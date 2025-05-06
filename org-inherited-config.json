@@ -7,7 +7,8 @@
         "description": ["Group all Go module updates together"],
         "matchManagers": ["gomod"],
         "groupName": "Go Dependencies",
-        "groupSlug": "go-deps"
+        "groupSlug": "go-deps",
+        "allowedVersions": "<1.24.0"
       },
       {
         "description": ["Group all Docker image updates together"],
@@ -19,7 +20,8 @@
         "description": ["Group all Python module updates together"],
         "matchManagers": ["pip_requirements"],
         "groupName": "Python Dependencies",
-        "groupSlug": "python-deps"
+        "groupSlug": "python-deps",
+        "allowedVersions": "<3.12.0"
       },
       {
         "description": ["Group all Rust module updates together"],
@@ -32,12 +34,6 @@
         "matchManagers": ["npm"],
         "groupName": "NPM Dependencies",
         "groupSlug": "npm-deps"
-      },
-      {
-        "matchDatasources": [
-          "golang-version"
-        ],
-        "allowedVersions": "<1.24.0"
       },
       {
         "matchDatasources": [
