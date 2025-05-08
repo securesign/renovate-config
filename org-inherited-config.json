@@ -20,7 +20,8 @@
         "description": ["Group all Python module updates together"],
         "matchManagers": ["pip_requirements"],
         "groupName": "Python Dependencies",
-        "groupSlug": "python-deps"
+        "groupSlug": "python-deps",
+        "allowedVersions": "<3.12.0"
       },
       {
         "description": ["Group all Rust module updates together"],
