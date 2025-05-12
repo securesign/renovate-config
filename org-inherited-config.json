@@ -9,7 +9,7 @@
       "matchDepTypes": ["*"],
       "groupName": "Go Dependencies",
       "groupSlug": "go-deps",
-      "allowedVersions": "<1.24.0"
+      "allowedVersions": "<=1.23.4"
     },
     {
       "description": ["Group all Docker image updates together"],
