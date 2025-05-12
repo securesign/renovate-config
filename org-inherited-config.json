@@ -21,18 +21,21 @@
     {
       "description": ["Group all Python module updates together"],
       "matchManagers": ["pip_requirements"],
+      "matchDepTypes": ["*"],
       "groupName": "Python Dependencies",
       "groupSlug": "python-deps"
     },
     {
       "description": ["Group all Rust module updates together"],
       "matchManagers": ["cargo"],
+      "matchDepTypes": ["*"],
       "groupName": "Rust Dependencies",
       "groupSlug": "rust-deps"
     },
     {
       "description": ["Group all NPM module updates together"],
       "matchManagers": ["npm"],
+      "matchDepTypes": ["*"],
       "groupName": "NPM Dependencies",
       "groupSlug": "npm-deps"
     },
