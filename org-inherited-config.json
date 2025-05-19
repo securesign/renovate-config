@@ -10,7 +10,7 @@
       "matchDepTypes": ["*"],
       "groupName": "Go Dependencies",
       "groupSlug": "go-deps",
-      "allowedVersions": "<=1.23.4"
+      "allowedVersions": "<=1.23.6"
     },
     {
       "description": ["Group all Docker image updates together"],
@@ -60,7 +60,7 @@
   "gomod": {
     "postUpdateOptions": [
       "gomodUpdateImportPaths",
-      "gomodTidy"
+      "gomodTidy1.23.6"
     ],
   "packageRules": [
       {
@@ -71,7 +71,7 @@
           "indirect"
         ],
         "enabled": true,
-        "allowedVersions": "<=1.23.4"
+        "allowedVersions": "<=1.23.6"
       }
     ]
   },
