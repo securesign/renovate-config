@@ -1,16 +1,35 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": [
+    "Shared Renovate config for SecureSign with branch-specific version constraints.",
+    "Main branch: all updates. Release branches: CVE/security updates only.",
+    "Note: mintmaker sets baseBranches dynamically per component."
+  ],
   "labels": ["dependencies"],
-  "ignorePresets": ["config:recommended","group:recommended","group:monorepo"],
-  "enabledManagers": ["dockerfile","npm","pip_requirements","gomod","cargo","tekton","custom.regex"],
+  "ignorePresets": ["config:recommended", "group:recommended", "group:monorepo"],
+  "enabledManagers": ["dockerfile", "npm", "pip_requirements", "gomod", "cargo", "tekton", "custom.regex"],
+  "baseBranchPatterns": ["main", "/^release-.*/"],
+  "osvVulnerabilityAlerts": true,
+  "vulnerabilityAlerts": {
+    "enabled": true,
+    "labels": ["security", "dependencies"]
+  },
+  "automergeType": "pr",
+  "automergeStrategy": "rebase",
+  "platformAutomerge": true,
+  "minor": {
+    "automerge": true
+  },
+  "patch": {
+    "automerge": true
+  },
   "packageRules": [
     {
       "description": ["Group all Go module updates together"],
       "matchManagers": ["gomod"],
       "matchDepTypes": ["*"],
       "groupName": "Go Dependencies",
-      "groupSlug": "go-deps",
-      "allowedVersions": "<=1.23.6"
+      "groupSlug": "go-deps"
     },
     {
       "description": ["Group all Docker image updates together"],
@@ -40,40 +59,70 @@
       "groupSlug": "npm-deps"
     },
     {
-      "matchDatasources": [
-        "docker"
-      ],
-      "matchPackageNames": [
-        "golang"
-      ],
+      "description": ["RELEASE BRANCHES: Disable regular updates, we should only update for CVEs raised via vulnerabilityAlerts"],
+      "matchBaseBranches": ["/^release-.*/"],
+      "enabled": false
+    },
+    {
+      "description": ["RELEASE BRANCHES: Go module version constraint"],
+      "matchBaseBranches": ["/^release-.*/"],
+      "matchManagers": ["gomod"],
+      "allowedVersions": "<=1.23.6"
+    },
+    {
+      "description": ["RELEASE BRANCHES: Go indirect dependencies"],
+      "matchBaseBranches": ["/^release-.*/"],
+      "matchManagers": ["gomod"],
+      "matchDepTypes": ["indirect"],
+      "allowedVersions": "<=1.23.6"
+    },
+    {
+      "description": ["RELEASE BRANCHES: Golang Docker image constraint"],
+      "matchBaseBranches": ["/^release-.*/"],
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["golang"],
       "allowedVersions": "<1.24.0"
     },
     {
-      "matchDatasources": [
-          "docker"
-      ],
-      "matchPackageNames": [
-          "python"
-      ],
+      "description": ["RELEASE BRANCHES: Python Docker image constraint"],
+      "matchBaseBranches": ["/^release-.*/"],
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["python"],
+      "allowedVersions": "<3.12.0"
+    },
+    {
+      "description": ["MAIN BRANCH: Go module version constraint"],
+      "matchBaseBranches": ["main"],
+      "matchManagers": ["gomod"],
+      "allowedVersions": "<=1.23.6"
+    },
+    {
+      "description": ["MAIN BRANCH: Go indirect dependencies"],
+      "matchBaseBranches": ["main"],
+      "matchManagers": ["gomod"],
+      "matchDepTypes": ["indirect"],
+      "enabled": true,
+      "allowedVersions": "<=1.23.6"
+    },
+    {
+      "description": ["MAIN BRANCH: Golang Docker image constraint"],
+      "matchBaseBranches": ["main"],
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["golang"],
+      "allowedVersions": "<1.24.0"
+    },
+    {
+      "description": ["MAIN BRANCH: Python Docker image constraint"],
+      "matchBaseBranches": ["main"],
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["python"],
       "allowedVersions": "<3.12.0"
     }
   ],
   "gomod": {
     "postUpdateOptions": [
       "gomodUpdateImportPaths",
-      "gomodTidy1.23.6"
-    ],
-  "packageRules": [
-      {
-        "matchManagers": [
-          "gomod"
-        ],
-        "matchDepTypes": [
-          "indirect"
-        ],
-        "enabled": true,
-        "allowedVersions": "<=1.23.6"
-      }
+      "gomodTidy"
     ]
   },
   "ignoreDeps": [
