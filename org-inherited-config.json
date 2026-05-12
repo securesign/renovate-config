@@ -5,6 +5,11 @@
   "enabledManagers": ["dockerfile","npm","pip_requirements","gomod","cargo","tekton","custom.regex"],
   "packageRules": [
     {
+      "description": ["Disable GitHub Actions updates"],
+      "matchManagers": ["github-actions"],
+      "enabled": false
+    },
+    {
       "description": ["Group all Go module updates together"],
       "matchManagers": ["gomod"],
       "groupName": "Go Dependencies",
