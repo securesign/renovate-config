@@ -18,6 +18,18 @@
       "separateMajorMinor": false
     },
     {
+      "description": ["Group Ansible testing tool updates together"],
+      "matchPackageNames": ["molecule", "galaxy-importer", "ansible-lint", "ansible-core", "ansible"],
+      "groupName": "Ansible Testing Tools",
+      "groupSlug": "ansible-testing"
+    },
+    {
+      "description": ["Group Konflux component updates together"],
+      "matchPackagePatterns": ["^certificate-transparency-go$", "^backfill-redis$", "^timestamp-authority$", "^rekor-search$", "^rekor-server$", "^fulcio-server$", "^logserver$", "^database$", "^logsigner$", "^redis$", "^rekor-monitor$", "^ctlog-monitor$", "^create-tree$"],
+      "groupName": "Konflux Components",
+      "groupSlug": "konflux-components"
+    },
+    {
       "description": ["Group all Docker image updates together"],
       "matchManagers": ["dockerfile"],
       "groupName": "Docker Images",
