@@ -24,12 +24,6 @@
       "groupSlug": "ansible-testing"
     },
     {
-      "description": ["Group Konflux component updates together"],
-      "matchPackagePatterns": ["^certificate-transparency-go$", "^backfill-redis$", "^timestamp-authority$", "^rekor-search$", "^rekor-server$", "^fulcio-server$", "^logserver$", "^database$", "^logsigner$", "^redis$", "^rekor-monitor$", "^ctlog-monitor$", "^create-tree$"],
-      "groupName": "Konflux Components",
-      "groupSlug": "konflux-components"
-    },
-    {
       "description": ["Group all Docker image updates together"],
       "matchManagers": ["dockerfile"],
       "groupName": "Docker Images",
@@ -52,14 +46,6 @@
       "matchManagers": ["npm"],
       "groupName": "NPM Dependencies",
       "groupSlug": "npm-deps"
-    },
-    {
-      "matchDatasources": [
-        "docker"
-      ],
-      "matchPackageNames": [
-        "golang"
-      ]
     },
     {
       "matchDatasources": [
