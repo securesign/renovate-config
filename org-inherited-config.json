@@ -3,6 +3,7 @@
   "labels": ["dependencies"],
   "ignorePresets": ["config:recommended","group:recommended","group:monorepo"],
   "enabledManagers": ["dockerfile","npm","pip_requirements","gomod","cargo","tekton","custom.regex"],
+  "baseBranchPatterns": ["main", "/^release-.*/", "develop"],
   "packageRules": [
     {
       "description": ["Group all GitHub Actions updates together"],
